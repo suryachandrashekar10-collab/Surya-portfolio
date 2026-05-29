@@ -1,0 +1,930 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Surya Chandrashekara | Data & Strategy</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --ink: #0f0e0d;
+    --ink-soft: #5a5751;
+    --ink-muted: #9a9590;
+    --bg: #faf9f7;
+    --bg-card: #f3f1ed;
+    --accent: #c84b2f;
+    --accent-soft: #f5ece8;
+    --border: #e2dfd8;
+    --serif: 'DM Serif Display', Georgia, serif;
+    --sans: 'DM Sans', system-ui, sans-serif;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: var(--sans);
+    background: var(--bg);
+    color: var(--ink);
+    font-size: 16px;
+    line-height: 1.7;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  a { color: inherit; text-decoration: none; }
+
+  /* NAV */
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.25rem 4rem;
+    background: rgba(250,249,247,0.92);
+    backdrop-filter: blur(8px);
+    border-bottom: 1px solid var(--border);
+  }
+
+  .nav-logo {
+    font-family: var(--serif);
+    font-size: 1.1rem;
+    letter-spacing: 0.01em;
+  }
+
+  .nav-links {
+    display: flex;
+    gap: 2.5rem;
+    list-style: none;
+    font-size: 0.875rem;
+    font-weight: 300;
+    letter-spacing: 0.04em;
+    color: var(--ink-soft);
+  }
+
+  .nav-links a:hover { color: var(--accent); transition: color 0.2s; }
+
+  /* HERO */
+  .hero {
+    min-height: 100vh;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
+    padding: 6rem 4rem 4rem;
+    gap: 4rem;
+  }
+
+  .hero-text {}
+
+  .hero-eyebrow {
+    font-size: 0.75rem;
+    font-weight: 500;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 1.25rem;
+  }
+
+  .hero-name {
+    font-family: var(--serif);
+    font-size: clamp(2.8rem, 5vw, 4.2rem);
+    line-height: 1.1;
+    color: var(--ink);
+    margin-bottom: 0.5rem;
+  }
+
+  .hero-name em {
+    font-style: italic;
+    color: var(--accent);
+  }
+
+  .hero-title {
+    font-family: var(--serif);
+    font-size: 1.2rem;
+    font-weight: 400;
+    color: var(--ink-soft);
+    margin-bottom: 1.75rem;
+    font-style: italic;
+  }
+
+  .hero-bio {
+    font-size: 0.95rem;
+    font-weight: 300;
+    color: var(--ink-soft);
+    max-width: 480px;
+    line-height: 1.8;
+    margin-bottom: 2.5rem;
+  }
+
+  .hero-ctas {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+  }
+
+  .btn-primary {
+    background: var(--ink);
+    color: var(--bg);
+    padding: 0.7rem 1.75rem;
+    font-family: var(--sans);
+    font-size: 0.85rem;
+    font-weight: 500;
+    letter-spacing: 0.03em;
+    border: none;
+    cursor: pointer;
+    transition: background 0.2s;
+    display: inline-block;
+  }
+
+  .btn-primary:hover { background: var(--accent); }
+
+  .btn-outline {
+    border: 1px solid var(--border);
+    color: var(--ink-soft);
+    padding: 0.7rem 1.75rem;
+    font-family: var(--sans);
+    font-size: 0.85rem;
+    font-weight: 300;
+    letter-spacing: 0.03em;
+    cursor: pointer;
+    transition: border-color 0.2s, color 0.2s;
+    display: inline-block;
+  }
+
+  .btn-outline:hover { border-color: var(--ink); color: var(--ink); }
+
+  .hero-visual {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .stat-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+  }
+
+  .stat-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    padding: 1.5rem;
+  }
+
+  .stat-number {
+    font-family: var(--serif);
+    font-size: 2.2rem;
+    color: var(--ink);
+    line-height: 1;
+    margin-bottom: 0.3rem;
+  }
+
+  .stat-label {
+    font-size: 0.78rem;
+    font-weight: 300;
+    color: var(--ink-muted);
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+  }
+
+  .location-strip {
+    background: var(--accent-soft);
+    border: 1px solid #e8c4ba;
+    padding: 1rem 1.5rem;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    font-size: 0.875rem;
+    color: var(--ink-soft);
+  }
+
+  .location-dot {
+    width: 8px;
+    height: 8px;
+    background: var(--accent);
+    border-radius: 50%;
+    flex-shrink: 0;
+    animation: pulse 2s infinite;
+  }
+
+  @keyframes pulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.3; }
+  }
+
+  /* SECTIONS */
+  section { padding: 5rem 4rem; }
+
+  .section-label {
+    font-size: 0.72rem;
+    font-weight: 500;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 0.75rem;
+  }
+
+  .section-heading {
+    font-family: var(--serif);
+    font-size: clamp(1.8rem, 3vw, 2.4rem);
+    line-height: 1.2;
+    color: var(--ink);
+    margin-bottom: 3rem;
+  }
+
+  /* SKILLS */
+  .skills-section { background: var(--bg); border-top: 1px solid var(--border); }
+
+  .skills-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1.5rem;
+  }
+
+  .skill-group {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    padding: 1.5rem;
+  }
+
+  .skill-group-title {
+    font-size: 0.72rem;
+    font-weight: 500;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 1rem;
+  }
+
+  .skill-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem;
+  }
+
+  .skill-tag {
+    font-size: 0.78rem;
+    font-weight: 300;
+    background: var(--bg);
+    border: 1px solid var(--border);
+    padding: 0.25rem 0.6rem;
+    color: var(--ink-soft);
+  }
+
+  /* EXPERIENCE */
+  .experience-section { background: var(--bg-card); border-top: 1px solid var(--border); }
+
+  .timeline {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+  }
+
+  .timeline-item {
+    display: grid;
+    grid-template-columns: 200px 1fr;
+    gap: 2rem;
+    padding: 2rem 0;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .timeline-item:last-child { border-bottom: none; }
+
+  .timeline-meta {}
+
+  .timeline-date {
+    font-size: 0.78rem;
+    font-weight: 300;
+    color: var(--ink-muted);
+    letter-spacing: 0.04em;
+    margin-bottom: 0.25rem;
+  }
+
+  .timeline-company {
+    font-size: 0.85rem;
+    font-weight: 500;
+    color: var(--ink);
+  }
+
+  .timeline-location {
+    font-size: 0.75rem;
+    font-weight: 300;
+    color: var(--ink-muted);
+    margin-top: 0.2rem;
+  }
+
+  .timeline-content {}
+
+  .timeline-role {
+    font-family: var(--serif);
+    font-size: 1.25rem;
+    color: var(--ink);
+    margin-bottom: 0.75rem;
+  }
+
+  .timeline-bullets {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .timeline-bullets li {
+    font-size: 0.88rem;
+    font-weight: 300;
+    color: var(--ink-soft);
+    line-height: 1.6;
+    padding-left: 1rem;
+    position: relative;
+  }
+
+  .timeline-bullets li::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0.62em;
+    width: 4px;
+    height: 4px;
+    background: var(--accent);
+    border-radius: 50%;
+  }
+
+  /* PROJECTS */
+  .projects-section { background: var(--bg); border-top: 1px solid var(--border); }
+
+  .projects-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 1.5rem;
+  }
+
+  .project-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    padding: 2rem;
+    transition: border-color 0.2s, transform 0.2s;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .project-card:hover {
+    border-color: var(--accent);
+    transform: translateY(-2px);
+  }
+
+  .project-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0;
+    width: 3px;
+    height: 0;
+    background: var(--accent);
+    transition: height 0.25s;
+  }
+
+  .project-card:hover::before { height: 100%; }
+
+  .project-tag {
+    display: inline-block;
+    font-size: 0.7rem;
+    font-weight: 500;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    background: var(--accent-soft);
+    color: var(--accent);
+    padding: 0.2rem 0.5rem;
+    margin-bottom: 1rem;
+  }
+
+  .project-title {
+    font-family: var(--serif);
+    font-size: 1.2rem;
+    color: var(--ink);
+    margin-bottom: 0.75rem;
+    line-height: 1.3;
+  }
+
+  .project-desc {
+    font-size: 0.85rem;
+    font-weight: 300;
+    color: var(--ink-soft);
+    line-height: 1.7;
+    margin-bottom: 1.25rem;
+  }
+
+  .project-metrics {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+  }
+
+  .metric-pill {
+    font-size: 0.75rem;
+    font-weight: 500;
+    background: var(--bg);
+    border: 1px solid var(--border);
+    padding: 0.2rem 0.6rem;
+    color: var(--ink-soft);
+  }
+
+  /* EDUCATION */
+  .education-section { background: var(--bg-card); border-top: 1px solid var(--border); }
+
+  .edu-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 1.5rem;
+  }
+
+  .edu-card {
+    background: var(--bg);
+    border: 1px solid var(--border);
+    padding: 1.75rem;
+  }
+
+  .edu-degree {
+    font-family: var(--serif);
+    font-size: 1.1rem;
+    color: var(--ink);
+    margin-bottom: 0.3rem;
+    line-height: 1.3;
+  }
+
+  .edu-school {
+    font-size: 0.85rem;
+    font-weight: 500;
+    color: var(--accent);
+    margin-bottom: 0.2rem;
+  }
+
+  .edu-detail {
+    font-size: 0.8rem;
+    font-weight: 300;
+    color: var(--ink-muted);
+  }
+
+  /* CONTACT */
+  .contact-section {
+    background: var(--ink);
+    color: var(--bg);
+    border-top: none;
+  }
+
+  .contact-section .section-label { color: #e8856a; }
+
+  .contact-section .section-heading { color: var(--bg); }
+
+  .contact-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    align-items: start;
+  }
+
+  .contact-intro {
+    font-size: 0.95rem;
+    font-weight: 300;
+    color: rgba(250,249,247,0.65);
+    line-height: 1.8;
+    margin-bottom: 2rem;
+  }
+
+  .contact-links {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .contact-link {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    font-size: 0.88rem;
+    font-weight: 300;
+    color: rgba(250,249,247,0.7);
+    transition: color 0.2s;
+    border-bottom: 1px solid rgba(255,255,255,0.08);
+    padding-bottom: 1rem;
+  }
+
+  .contact-link:hover { color: #e8856a; }
+
+  .contact-link-icon {
+    width: 32px;
+    height: 32px;
+    border: 1px solid rgba(255,255,255,0.15);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.75rem;
+    color: rgba(250,249,247,0.5);
+    flex-shrink: 0;
+  }
+
+  .availability-card {
+    background: rgba(255,255,255,0.05);
+    border: 1px solid rgba(255,255,255,0.1);
+    padding: 2rem;
+  }
+
+  .availability-heading {
+    font-family: var(--serif);
+    font-size: 1.3rem;
+    color: var(--bg);
+    margin-bottom: 1rem;
+  }
+
+  .availability-text {
+    font-size: 0.85rem;
+    font-weight: 300;
+    color: rgba(250,249,247,0.6);
+    line-height: 1.7;
+    margin-bottom: 1.5rem;
+  }
+
+  .btn-light {
+    background: var(--bg);
+    color: var(--ink);
+    padding: 0.7rem 1.75rem;
+    font-family: var(--sans);
+    font-size: 0.85rem;
+    font-weight: 500;
+    border: none;
+    cursor: pointer;
+    display: inline-block;
+    transition: background 0.2s;
+  }
+
+  .btn-light:hover { background: #e8856a; color: white; }
+
+  /* FOOTER */
+  footer {
+    background: var(--ink);
+    border-top: 1px solid rgba(255,255,255,0.08);
+    padding: 1.5rem 4rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 0.75rem;
+    font-weight: 300;
+    color: rgba(250,249,247,0.3);
+  }
+
+  /* ANIMATIONS */
+  .fade-in {
+    opacity: 0;
+    transform: translateY(18px);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+  }
+
+  .fade-in.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* RESPONSIVE */
+  @media (max-width: 900px) {
+    nav { padding: 1rem 1.5rem; }
+    .nav-links { display: none; }
+    .hero { grid-template-columns: 1fr; padding: 6rem 1.5rem 3rem; gap: 2.5rem; }
+    section { padding: 3.5rem 1.5rem; }
+    .timeline-item { grid-template-columns: 1fr; gap: 0.5rem; }
+    .contact-grid { grid-template-columns: 1fr; gap: 2rem; }
+    footer { padding: 1.25rem 1.5rem; flex-direction: column; gap: 0.5rem; text-align: center; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-logo">Surya Chandrashekara</div>
+  <ul class="nav-links">
+    <li><a href="#skills">Skills</a></li>
+    <li><a href="#experience">Experience</a></li>
+    <li><a href="#projects">Projects</a></li>
+    <li><a href="#education">Education</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-text fade-in">
+    <p class="hero-eyebrow">Analytics &amp; Digital Strategy</p>
+    <h1 class="hero-name">Surya<br><em>Chandrashekara</em></h1>
+    <p class="hero-title">Turning messy data into decisions that matter</p>
+    <p class="hero-bio">Analytics professional with three years of experience building data solutions and automation systems for European clients. Background spans payment processing, supply chain optimisation, and business intelligence. Currently at NEXI Group while completing an M.Sc. at Frankfurt School of Finance &amp; Management.</p>
+    <div class="hero-ctas">
+      <a href="mailto:surya.chandrashekar10@gmail.com" class="btn-primary">Get in touch</a>
+      <a href="https://www.linkedin.com/in/surya-chandrashekara" target="_blank" class="btn-outline">LinkedIn</a>
+    </div>
+  </div>
+
+  <div class="hero-visual fade-in" style="transition-delay: 0.15s;">
+    <div class="stat-grid">
+      <div class="stat-card">
+        <div class="stat-number">3+</div>
+        <div class="stat-label">Years Experience</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-number">95%</div>
+        <div class="stat-label">Process Time Saved</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-number">21%</div>
+        <div class="stat-label">Forecast Accuracy Gain</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-number">99%</div>
+        <div class="stat-label">MIT MicroMasters Grade</div>
+      </div>
+    </div>
+    <div class="location-strip">
+      <div class="location-dot"></div>
+      <span>Frankfurt am Main, Germany &nbsp;&middot;&nbsp; Open to relocation &nbsp;&middot;&nbsp; EU work authorisation</span>
+    </div>
+  </div>
+</section>
+
+<!-- SKILLS -->
+<section class="skills-section" id="skills">
+  <p class="section-label">Capabilities</p>
+  <h2 class="section-heading">Core skill set</h2>
+  <div class="skills-grid fade-in">
+    <div class="skill-group">
+      <div class="skill-group-title">Programming</div>
+      <div class="skill-tags">
+        <span class="skill-tag">Python</span>
+        <span class="skill-tag">SQL</span>
+        <span class="skill-tag">R</span>
+        <span class="skill-tag">dbt</span>
+      </div>
+    </div>
+    <div class="skill-group">
+      <div class="skill-group-title">Analytics &amp; BI</div>
+      <div class="skill-tags">
+        <span class="skill-tag">Power BI</span>
+        <span class="skill-tag">BigQuery</span>
+        <span class="skill-tag">Looker Studio</span>
+        <span class="skill-tag">Tableau</span>
+        <span class="skill-tag">SAP BW</span>
+      </div>
+    </div>
+    <div class="skill-group">
+      <div class="skill-group-title">AI / ML</div>
+      <div class="skill-tags">
+        <span class="skill-tag">XGBoost</span>
+        <span class="skill-tag">Prophet</span>
+        <span class="skill-tag">SHAP</span>
+        <span class="skill-tag">LLMs</span>
+        <span class="skill-tag">Vision AI</span>
+        <span class="skill-tag">Prompt Engineering</span>
+      </div>
+    </div>
+    <div class="skill-group">
+      <div class="skill-group-title">Automation &amp; Tools</div>
+      <div class="skill-tags">
+        <span class="skill-tag">n8n</span>
+        <span class="skill-tag">SAP MM</span>
+        <span class="skill-tag">Jira</span>
+        <span class="skill-tag">Google Analytics</span>
+        <span class="skill-tag">KNIME</span>
+      </div>
+    </div>
+    <div class="skill-group">
+      <div class="skill-group-title">Domain</div>
+      <div class="skill-tags">
+        <span class="skill-tag">Payment Processing</span>
+        <span class="skill-tag">Supply Chain</span>
+        <span class="skill-tag">ERP</span>
+        <span class="skill-tag">S&amp;OP</span>
+        <span class="skill-tag">Product Strategy</span>
+      </div>
+    </div>
+    <div class="skill-group">
+      <div class="skill-group-title">Languages</div>
+      <div class="skill-tags">
+        <span class="skill-tag">English (Proficient)</span>
+        <span class="skill-tag">German (B1)</span>
+        <span class="skill-tag">Kannada (Native)</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- EXPERIENCE -->
+<section class="experience-section" id="experience">
+  <p class="section-label">Career</p>
+  <h2 class="section-heading">Work experience</h2>
+  <div class="timeline">
+
+    <div class="timeline-item fade-in">
+      <div class="timeline-meta">
+        <div class="timeline-date">Nov 2024 &ndash; Present</div>
+        <div class="timeline-company">NEXI Group</div>
+        <div class="timeline-location">Frankfurt, Germany</div>
+      </div>
+      <div class="timeline-content">
+        <div class="timeline-role">Strategy &amp; Insights, Working Student</div>
+        <ul class="timeline-bullets">
+          <li>Built a Python automation tool that cut monthly payment reconciliation from ~6 hours to 20 minutes by pulling data directly from SAP BW</li>
+          <li>Created Power BI dashboards tracking payment processing performance across five business areas for senior management</li>
+          <li>Developed an AI forecasting model for master's thesis analysing payment transaction patterns for commercial team visibility</li>
+          <li>Investigated and resolved data pipeline issues causing wrong numbers or missing transactions in payment reports</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="timeline-item fade-in">
+      <div class="timeline-meta">
+        <div class="timeline-date">Nov 2021 &ndash; Jun 2024</div>
+        <div class="timeline-company">NTT Data</div>
+        <div class="timeline-location">Bengaluru, India</div>
+      </div>
+      <div class="timeline-content">
+        <div class="timeline-role">Senior Product Specialist, Supply Chain Consulting</div>
+        <ul class="timeline-bullets">
+          <li>Led technical delivery for European supply chain clients, aligning data integration projects with long-term business goals</li>
+          <li>Designed SQL-based forecasting and planning solutions, improving forecast accuracy by ~21% and reducing planning cycle times</li>
+          <li>Structured recommendations across commercial, operations, and IT teams and presented findings to client leadership</li>
+          <li>Managed project timelines and deliverables through Jira across cross-functional teams</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="timeline-item fade-in">
+      <div class="timeline-meta">
+        <div class="timeline-date">Aug 2021 &ndash; Nov 2021</div>
+        <div class="timeline-company">Accenture</div>
+        <div class="timeline-location">Bengaluru, India</div>
+      </div>
+      <div class="timeline-content">
+        <div class="timeline-role">Application Development Associate</div>
+        <ul class="timeline-bullets">
+          <li>Supported SAP MM implementation with exposure to FI, SD, and WM modules in supply chain and procurement processes</li>
+          <li>Developed foundational understanding of ERP systems and analytics tools for supply chain operations</li>
+        </ul>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- PROJECTS -->
+<section class="projects-section" id="projects">
+  <p class="section-label">Portfolio</p>
+  <h2 class="section-heading">Selected projects</h2>
+  <div class="projects-grid">
+
+    <div class="project-card fade-in">
+      <span class="project-tag">AI Automation</span>
+      <div class="project-title">End-to-End AI Invoice Processing Pipeline</div>
+      <p class="project-desc">Built an autonomous invoice processing system using LLMs and Vision AI to extract vendor data from emails, validate business logic, push to ERP, and automate confirmations. Integrated Outlook, Gemini Vision AI, and Zoho Books via n8n.</p>
+      <div class="project-metrics">
+        <span class="metric-pill">95% time reduction</span>
+        <span class="metric-pill">98%+ accuracy</span>
+        <span class="metric-pill">n8n + Gemini + OAuth</span>
+      </div>
+    </div>
+
+    <div class="project-card fade-in">
+      <span class="project-tag">Forecasting &amp; ML</span>
+      <div class="project-title">AI Sales Forecasting for PayTech (Master's Thesis)</div>
+      <p class="project-desc">Compared Linear Regression, Prophet, and XGBoost on synthetic POS payment data. Added SHAP explainability to help commercial teams understand which drivers matter most, not just what the model predicts.</p>
+      <div class="project-metrics">
+        <span class="metric-pill">XGBoost + Prophet</span>
+        <span class="metric-pill">SHAP explainability</span>
+        <span class="metric-pill">Google Colab</span>
+      </div>
+    </div>
+
+    <div class="project-card fade-in">
+      <span class="project-tag">Business Intelligence</span>
+      <div class="project-title">Payment Reconciliation Automation at NEXI</div>
+      <p class="project-desc">Python tool replacing manual SAP BW extraction across multiple systems. Combined with Power BI dashboards giving senior management early visibility into payment processing performance across five business areas.</p>
+      <div class="project-metrics">
+        <span class="metric-pill">6h &rarr; 20min</span>
+        <span class="metric-pill">Python + SAP BW</span>
+        <span class="metric-pill">Power BI</span>
+      </div>
+    </div>
+
+    <div class="project-card fade-in">
+      <span class="project-tag">Digital Strategy</span>
+      <div class="project-title">B2B SaaS Growth Strategy (Onuava GmbH)</div>
+      <p class="project-desc">Led a five-person team diagnosing a 4x traffic gap vs. a key competitor. Found only 12% of LinkedIn engagement reached target buyers and redesigned content strategy, UX, and AI-powered automation to shift that to 30-40%.</p>
+      <div class="project-metrics">
+        <span class="metric-pill">12% &rarr; 30-40% ICP reach</span>
+        <span class="metric-pill">&euro;525 CPA model</span>
+        <span class="metric-pill">LinkedIn + UX + AI</span>
+      </div>
+    </div>
+
+    <div class="project-card fade-in">
+      <span class="project-tag">Supply Chain</span>
+      <div class="project-title">Forecasting &amp; Planning for European Clients (NTT Data)</div>
+      <p class="project-desc">Designed SQL-based demand forecasting and S&amp;OP solutions for European clients. Improved forecast accuracy by 21% while reducing planning cycle times, bridging commercial, operations, and IT stakeholders.</p>
+      <div class="project-metrics">
+        <span class="metric-pill">21% accuracy gain</span>
+        <span class="metric-pill">SQL automation</span>
+        <span class="metric-pill">Multi-stakeholder</span>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- EDUCATION -->
+<section class="education-section" id="education">
+  <p class="section-label">Academic Background</p>
+  <h2 class="section-heading">Education</h2>
+  <div class="edu-grid">
+
+    <div class="edu-card fade-in">
+      <div class="edu-degree">M.Sc. Management</div>
+      <div class="edu-school">Frankfurt School of Finance &amp; Management</div>
+      <div class="edu-detail">Digital Business, Technology &amp; Operations &middot; 2024&ndash;2026</div>
+      <div class="edu-detail" style="margin-top:0.4rem; color: #c84b2f; font-size:0.78rem;">STIBET I &amp; II Scholarship Recipient</div>
+    </div>
+
+    <div class="edu-card fade-in">
+      <div class="edu-degree">MicroMasters in Supply Chain Management</div>
+      <div class="edu-school">MIT (MITx / edX)</div>
+      <div class="edu-detail">SC0x completed with 99% &middot; 2024&ndash;Present</div>
+      <div class="edu-detail" style="margin-top:0.4rem; color: var(--ink-muted); font-size:0.78rem;">Equivalent to one semester of MIT graduate-level coursework</div>
+    </div>
+
+    <div class="edu-card fade-in">
+      <div class="edu-degree">B.E. Industrial Production Engineering</div>
+      <div class="edu-school">The National Institute of Engineering, Mysore</div>
+      <div class="edu-detail">First Class with Distinction &middot; 8.30/10 (95th percentile) &middot; 2017&ndash;2021</div>
+    </div>
+
+    <div class="edu-card fade-in">
+      <div class="edu-degree">Semester Abroad</div>
+      <div class="edu-school">Rice University &ndash; Jones Graduate School</div>
+      <div class="edu-detail">Houston, Texas &middot; Business coursework</div>
+    </div>
+
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="contact-section" id="contact">
+  <p class="section-label">Let's connect</p>
+  <h2 class="section-heading">Get in touch</h2>
+  <div class="contact-grid">
+    <div>
+      <p class="contact-intro">Open to full-time roles in data, digital strategy, and product analytics. Available from mid-2026 post-graduation. EU work authorisation with experience across Frankfurt and Bangalore markets.</p>
+      <div class="contact-links">
+        <a href="mailto:surya.chandrashekar10@gmail.com" class="contact-link">
+          <div class="contact-link-icon">@</div>
+          surya.chandrashekar10@gmail.com
+        </a>
+        <a href="https://www.linkedin.com/in/surya-chandrashekara" target="_blank" class="contact-link">
+          <div class="contact-link-icon">in</div>
+          linkedin.com/in/surya-chandrashekara
+        </a>
+        <a href="https://github.com/suryachandrashekar10-collab" target="_blank" class="contact-link">
+          <div class="contact-link-icon">gh</div>
+          github.com/suryachandrashekar10-collab
+        </a>
+        <a href="tel:+4915228072928" class="contact-link">
+          <div class="contact-link-icon">+</div>
+          +49 152 2807 2928
+        </a>
+      </div>
+    </div>
+    <div>
+      <div class="availability-card">
+        <div class="availability-heading">Currently available for</div>
+        <p class="availability-text">Full-time analyst or strategy roles starting mid-2026. Open to Frankfurt, Europe, Singapore, and Bangalore. Particularly interested in fintech, payments, and data-heavy product work.</p>
+        <a href="mailto:surya.chandrashekar10@gmail.com" class="btn-light">Send a message</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <span>Surya Chandrashekara &copy; 2026</span>
+  <span>Frankfurt am Main, Germany</span>
+</footer>
+
+<script>
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.classList.add('visible');
+        observer.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.1 });
+
+  document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+</script>
+
+</body>
+</html>

@@ -573,6 +573,226 @@
     color: rgba(250,249,247,0.3);
   }
 
+  /* AASS SECTION */
+  .aass-section { background: #0f0e0d; color: var(--bg); border-top: 1px solid #2a2926; padding: 5rem 4rem; }
+  .aass-section .section-label { color: #e8856a; }
+  .aass-section .section-heading { color: var(--bg); margin-bottom: 2.5rem; }
+
+  .aass-badge {
+    display: inline-block;
+    font-size: 0.7rem;
+    font-weight: 500;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    background: var(--accent);
+    color: white;
+    padding: 0.3rem 0.75rem;
+    animation: pulse 2.5s infinite;
+  }
+
+  .aass-hero {
+    display: grid;
+    grid-template-columns: 1fr 340px;
+    gap: 3rem;
+    align-items: start;
+    margin-bottom: 3rem;
+  }
+
+  .aass-tagline {
+    font-family: var(--serif);
+    font-size: 1.4rem;
+    color: #e8856a;
+    font-style: italic;
+    margin-bottom: 1rem;
+  }
+
+  .aass-desc {
+    font-size: 0.9rem;
+    font-weight: 300;
+    color: rgba(250,249,247,0.65);
+    line-height: 1.8;
+    margin-bottom: 1.75rem;
+  }
+
+  .aass-example {
+    background: rgba(255,255,255,0.04);
+    border: 1px solid rgba(255,255,255,0.1);
+    border-left: 3px solid var(--accent);
+    padding: 1.25rem 1.5rem;
+  }
+
+  .aass-prompt-label {
+    font-size: 0.7rem;
+    font-weight: 500;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: #e8856a;
+    margin-bottom: 0.5rem;
+  }
+
+  .aass-prompt {
+    font-family: var(--serif);
+    font-size: 0.95rem;
+    font-style: italic;
+    color: rgba(250,249,247,0.9);
+    line-height: 1.6;
+    margin-bottom: 0.75rem;
+  }
+
+  .aass-arrow {
+    color: var(--accent);
+    font-size: 1.2rem;
+    margin-bottom: 0.5rem;
+  }
+
+  .aass-output {
+    font-size: 0.78rem;
+    font-weight: 500;
+    color: #6dba8a;
+    letter-spacing: 0.03em;
+  }
+
+  .aass-role-card {
+    background: rgba(255,255,255,0.04);
+    border: 1px solid rgba(255,255,255,0.1);
+    padding: 1.75rem;
+  }
+
+  .aass-role-label {
+    font-size: 0.7rem;
+    font-weight: 500;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: #e8856a;
+    margin-bottom: 0.5rem;
+  }
+
+  .aass-role-title {
+    font-family: var(--serif);
+    font-size: 1.15rem;
+    color: rgba(250,249,247,0.95);
+    margin-bottom: 0.75rem;
+    line-height: 1.3;
+  }
+
+  .aass-role-detail {
+    font-size: 0.82rem;
+    font-weight: 300;
+    color: rgba(250,249,247,0.55);
+    line-height: 1.7;
+  }
+
+  .aass-divider { border-top: 1px solid rgba(255,255,255,0.08); margin: 1.25rem 0; }
+
+  .aass-stat-row { display: flex; gap: 1.25rem; }
+
+  .aass-mini-stat { display: flex; flex-direction: column; gap: 0.2rem; }
+  .aass-mini-stat span { font-family: var(--serif); font-size: 1.6rem; color: rgba(250,249,247,0.9); line-height: 1; }
+  .aass-mini-stat small { font-size: 0.7rem; font-weight: 300; color: rgba(250,249,247,0.4); letter-spacing: 0.06em; text-transform: uppercase; }
+
+  .aass-layers {
+    display: flex;
+    align-items: stretch;
+    gap: 0;
+    margin-bottom: 2.5rem;
+    overflow-x: auto;
+  }
+
+  .aass-layer-card {
+    flex: 1;
+    min-width: 140px;
+    background: rgba(255,255,255,0.03);
+    border: 1px solid rgba(255,255,255,0.08);
+    padding: 1.25rem;
+    transition: background 0.2s;
+  }
+
+  .aass-layer-card:hover { background: rgba(200,75,47,0.08); border-color: rgba(200,75,47,0.3); }
+
+  .aass-layer-num {
+    font-size: 0.65rem;
+    font-weight: 500;
+    letter-spacing: 0.15em;
+    color: var(--accent);
+    margin-bottom: 0.4rem;
+  }
+
+  .aass-layer-name {
+    font-size: 0.88rem;
+    font-weight: 500;
+    color: rgba(250,249,247,0.9);
+    margin-bottom: 0.5rem;
+  }
+
+  .aass-layer-desc {
+    font-size: 0.75rem;
+    font-weight: 300;
+    color: rgba(250,249,247,0.45);
+    line-height: 1.5;
+  }
+
+  .aass-layer-arrow {
+    display: flex;
+    align-items: center;
+    padding: 0 0.5rem;
+    color: rgba(255,255,255,0.2);
+    font-size: 1rem;
+    flex-shrink: 0;
+  }
+
+  .aass-tracks {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1rem;
+    margin-bottom: 2.5rem;
+  }
+
+  .aass-track {
+    background: rgba(255,255,255,0.03);
+    border: 1px solid rgba(255,255,255,0.08);
+    padding: 1.5rem;
+    transition: border-color 0.2s;
+  }
+
+  .aass-track:hover { border-color: rgba(200,75,47,0.4); }
+
+  .aass-track-icon { font-size: 1.4rem; margin-bottom: 0.75rem; }
+
+  .aass-track-title {
+    font-size: 0.9rem;
+    font-weight: 500;
+    color: rgba(250,249,247,0.9);
+    margin-bottom: 0.5rem;
+  }
+
+  .aass-track-desc {
+    font-size: 0.78rem;
+    font-weight: 300;
+    color: rgba(250,249,247,0.45);
+    line-height: 1.6;
+  }
+
+  .aass-tech {}
+  .aass-tech-label {
+    font-size: 0.7rem;
+    font-weight: 500;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: rgba(250,249,247,0.35);
+    margin-bottom: 0.75rem;
+  }
+
+  .aass-tech-tags { display: flex; flex-wrap: wrap; gap: 0.4rem; }
+
+  .aass-tech-tags span {
+    font-size: 0.75rem;
+    font-weight: 300;
+    background: rgba(255,255,255,0.06);
+    border: 1px solid rgba(255,255,255,0.1);
+    padding: 0.2rem 0.6rem;
+    color: rgba(250,249,247,0.55);
+  }
+
   /* ANIMATIONS */
   .fade-in {
     opacity: 0;
@@ -593,6 +813,11 @@
     section { padding: 3.5rem 1.5rem; }
     .timeline-item { grid-template-columns: 1fr; gap: 0.5rem; }
     .contact-grid { grid-template-columns: 1fr; gap: 2rem; }
+    .aass-section { padding: 3.5rem 1.5rem; }
+    .aass-hero { grid-template-columns: 1fr; gap: 2rem; }
+    .aass-layers { flex-direction: column; }
+    .aass-layer-arrow { transform: rotate(90deg); padding: 0.25rem 0; text-align: center; }
+    .aass-tracks { grid-template-columns: 1fr; }
     footer { padding: 1.25rem 1.5rem; flex-direction: column; gap: 0.5rem; text-align: center; }
   }
 </style>
@@ -602,6 +827,7 @@
 <nav>
   <div class="nav-logo">Surya Chandrashekara</div>
   <ul class="nav-links">
+    <li><a href="#product" style="color:var(--accent);">AASS</a></li>
     <li><a href="#skills">Skills</a></li>
     <li><a href="#experience">Experience</a></li>
     <li><a href="#projects">Projects</a></li>
@@ -869,6 +1095,97 @@
       <div class="edu-detail">Houston, Texas &middot; Business coursework</div>
     </div>
 
+  </div>
+</section>
+
+<!-- AASS PRODUCT -->
+<section class="aass-section" id="product">
+  <div class="aass-badge fade-in">Currently building</div>
+  <p class="section-label" style="margin-top:1rem;">Product in Development</p>
+  <h2 class="section-heading">Automation Anywhere Solution Suite <span style="font-style:italic; color:var(--accent);">(AASS)</span></h2>
+
+  <div class="aass-hero fade-in">
+    <div class="aass-hero-text">
+      <div class="aass-tagline">Natural Language &rarr; Enterprise Automation</div>
+      <p class="aass-desc">AASS lets any business user describe a task in plain English and get a production-ready automation workflow instantly. No code. No RPA developer needed. The platform parses intent via LLM, selects from a library of 100+ pre-built objects, assembles a workflow, and executes it against real enterprise systems like SAP, Salesforce, and Microsoft 365.</p>
+      <div class="aass-example">
+        <div class="aass-prompt-label">Example prompt</div>
+        <div class="aass-prompt">"Read the 10 invoice emails, extract fields using OCR, validate against SAP supplier records, post the invoice, and notify the AP team on Teams."</div>
+        <div class="aass-arrow">&darr;</div>
+        <div class="aass-output">Instant downloadable n8n-compatible workflow &middot; zero code &middot; runs in seconds</div>
+      </div>
+    </div>
+    <div class="aass-role-card">
+      <div class="aass-role-label">My role</div>
+      <div class="aass-role-title">Product Owner &amp; Product Manager</div>
+      <div class="aass-role-detail">Leading a team of 6 across runtime engineering, web app, and three workflow tracks (Leads &rarr; Salesforce, Invoices &rarr; SAP, Payments &rarr; Zoho)</div>
+      <div class="aass-divider"></div>
+      <div class="aass-stat-row">
+        <div class="aass-mini-stat"><span>6</span><small>Team members</small></div>
+        <div class="aass-mini-stat"><span>100+</span><small>Automation objects</small></div>
+        <div class="aass-mini-stat"><span>10</span><small>Product screens</small></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="aass-layers fade-in">
+    <div class="aass-layer-card">
+      <div class="aass-layer-num">01</div>
+      <div class="aass-layer-name">Intent Layer</div>
+      <div class="aass-layer-desc">Natural language input parsed by configurable LLM (Claude, GPT-4o, Gemini, or on-prem)</div>
+    </div>
+    <div class="aass-layer-arrow">&rarr;</div>
+    <div class="aass-layer-card">
+      <div class="aass-layer-num">02</div>
+      <div class="aass-layer-name">Assembly Layer</div>
+      <div class="aass-layer-desc">LLM selects and sequences objects from the library into a directed workflow DAG</div>
+    </div>
+    <div class="aass-layer-arrow">&rarr;</div>
+    <div class="aass-layer-card">
+      <div class="aass-layer-num">03</div>
+      <div class="aass-layer-name">Hardening Layer</div>
+      <div class="aass-layer-desc">Visual drag-and-drop builder for review, credential wiring, and error handling</div>
+    </div>
+    <div class="aass-layer-arrow">&rarr;</div>
+    <div class="aass-layer-card">
+      <div class="aass-layer-num">04</div>
+      <div class="aass-layer-name">Execution Layer</div>
+      <div class="aass-layer-desc">Purpose-built Go runtime executes objects as Docker containers — Compose or Agentic mode</div>
+    </div>
+    <div class="aass-layer-arrow">&rarr;</div>
+    <div class="aass-layer-card">
+      <div class="aass-layer-num">05</div>
+      <div class="aass-layer-name">Observability Layer</div>
+      <div class="aass-layer-desc">Real-time logs, audit trail, ROI tracking, and LLM cost analytics per workflow run</div>
+    </div>
+  </div>
+
+  <div class="aass-tracks fade-in">
+    <div class="aass-track">
+      <div class="aass-track-icon">&#9993;</div>
+      <div class="aass-track-title">Leads &rarr; Salesforce</div>
+      <div class="aass-track-desc">Read inbox &rarr; parse lead email via LLM &rarr; deduplicate &rarr; create/update Salesforce record</div>
+    </div>
+    <div class="aass-track">
+      <div class="aass-track-icon">&#128196;</div>
+      <div class="aass-track-title">Invoices &rarr; SAP</div>
+      <div class="aass-track-desc">OCR PDF invoice &rarr; extract fields via LLM &rarr; validate supplier &rarr; post to SAP via OData</div>
+    </div>
+    <div class="aass-track">
+      <div class="aass-track-icon">&#128200;</div>
+      <div class="aass-track-title">Payments &rarr; Zoho</div>
+      <div class="aass-track-desc">Parse Excel attachments &rarr; validate rows &rarr; match open invoices &rarr; apply payment in Zoho Books</div>
+    </div>
+  </div>
+
+  <div class="aass-tech fade-in">
+    <div class="aass-tech-label">Tech stack</div>
+    <div class="aass-tech-tags">
+      <span>Go Runtime</span><span>React 18</span><span>TypeScript</span><span>n8n triggers</span>
+      <span>Docker objects</span><span>Redis context bus</span><span>PostgreSQL</span>
+      <span>Vault secrets</span><span>Claude Sonnet</span><span>PyMuPDF + Tesseract</span>
+      <span>SAP OData</span><span>Salesforce API</span><span>Zoho Books API</span><span>Microsoft Graph</span>
+    </div>
   </div>
 </section>
 
